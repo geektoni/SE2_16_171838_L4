@@ -40,11 +40,12 @@ var create = function (request, response) {
       emp = {
         "error" : "true",
         "display": "inline",
-        "id": emp.id,
+        "id": isNaN(emp.id) ? "" : emp.id,
         "name": emp.name,
         "surname": emp.surname,
-        "level": emp.level,
-        "salary": emp.salary}
+        "level": isNaN(emp.level) ? "" : emp.level,
+        "salary": isNaN(emp.salary) ? "" : emp.salary
+      }
     } else {
       if(isNaN(emp.id)) {
         emp.id=model.nextVal()+1;
