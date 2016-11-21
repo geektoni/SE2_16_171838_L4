@@ -3,7 +3,7 @@
    <head>
       <meta charset="utf-8">
       <title> Employees Manager </title>
-      <link rel="stylesheet" type="text/css" href="statics/css/style.css" />
+      <link rel="stylesheet" type="text/css" href="/statics/css/style.css" />
    </head>
    <body>
      <h2>Empolyees Manager</h2>
@@ -32,6 +32,6 @@
      </form>
      <br/>
      <button type="button" onclick="showForm()">Show Employee manager</button>
-     <script src="statics/js/index.js"></script>
+     <script type="text/javascript" src="/statics/js/index.js"></script>
    </body>
 </html>

@@ -13,12 +13,12 @@ var bodyParser = require('body-parser');
 //instantiate express
 var app = express();
 
-var indexController = require('./controllers/indexController.js');
-var employeesController = require('./controllers/employeesController.js');
-
 // create a virtual path to expose static file
 // like css or images
 app.use('/statics', express.static('static'))
+
+var indexController = require('./controllers/indexController.js');
+var employeesController = require('./controllers/employeesController.js');
 
 // parse the request
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
