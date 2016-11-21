@@ -24,8 +24,8 @@ function isValid(emp) {
   if (emp.id < 0) return false;
   if (emp.level < 0 || isNaN(emp.level)) return false;
   if (emp.salary < 0 || isNaN(emp.salary)) return false;
-  if (emp.name == "") return false;
-  if (emp.surname == "") return false;
+  if (emp.name == "" || !/^[a-zA-Z]+$/.test(emp.name)) return false;
+  if (emp.surname == "" || !/^[a-zA-Z]+$/.test(emp.surname) ) return false;
   return true;
 }
 
