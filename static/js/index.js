@@ -7,5 +7,7 @@ function showForm() {
   } else {
     form.style.display = "inline";
   }
-  form.reset();
+  for (var i=0; i<form.elements.length; i++){
+    form.elements[i].value = "";
+  }
 }

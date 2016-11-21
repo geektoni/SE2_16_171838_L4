@@ -76,10 +76,15 @@ var create = function (request, response) {
 
 var delete_ = function (request, response) {
   if (request.body.delete_emp) {
+    var result = {}
     var id = parseInt(request.body.emp_id_delete);
-    model.deleteEmployee(id);
+    if (model.deleteEmployee(id)) {
+      result = {"delete":"true"};
+    } else {
+      result = {"delete_error": "true"};
+    }
     bind.toFile("./views/html/index.tpl",
-      {"delete":"true"},
+      result,
       function(data)
       {
           //write response

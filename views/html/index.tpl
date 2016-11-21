@@ -21,6 +21,11 @@
       [: then ~ <p style="color: green;">Employee deleted correctly!</p>:]
      :)
 
+     (:
+      if[delete_error] ~
+      [: then ~ <p style="color: red;">Employee does not exist. Done nothing.</p>:]
+     :)
+
 
      <form id="search_employee" method="GET" action="http://localhost:1337/employee/show">
        <input type="text" placeholder="Search by ID"  name="emp_id_search"/>

@@ -84,12 +84,12 @@ var updateEmployee = function (emp) {
 }
 
 var deleteEmployee = function(id) {
-  var status = true;
+  var status = false;
 
-  for (var i=0; i<database.length && status; i++) {
+  for (var i=0; i<database.length && !status; i++) {
     if (database[i].id === id) {
       database.splice(i, 1);
-      status = false;
+      status = true;
     }
   }
 
@@ -104,6 +104,9 @@ var deleteEmployee = function(id) {
     }
   }
   nextId = max;
+
+  return status;
+
 }
 
 var nextVal = function()
