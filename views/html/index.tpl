@@ -16,14 +16,19 @@
      [: then ~ <p style="color: red;">The value submitted are invalid!</p> :]
      :)
 
+     (:
+      if[delete] ~
+      [: then ~ <p style="color: green;">Employee deleted correctly!</p>:]
+     :)
+
 
      <form id="search_employee" method="GET" action="http://localhost:1337/employee/show">
        <input type="text" placeholder="Search by ID"  name="emp_id_search"/>
        <button name="search_emp" value="1">Search</button>
      </form>
      <form id="delete_employee" method="POST" action="http://localhost:1337/employee/delete">
-       <input type="text" placeholder="Employee's ID"  name="emp_id_search"/>
-       <button type="button" name="delete_emp">Delete Employee</button>
+       <input type="text" placeholder="Employee's ID"  name="emp_id_delete"/>
+       <button name="delete_emp" value="1">Delete Employee</button>
      </form>
      <br/>
      <form id="new_employee" method="POST" action="http://localhost:1337/employee/create" style="display: (: display ~ none :)">

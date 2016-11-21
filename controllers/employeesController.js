@@ -75,9 +75,22 @@ var create = function (request, response) {
 }
 
 var delete_ = function (request, response) {
-
+  if (request.body.delete_emp) {
+    var id = parseInt(request.body.emp_id_delete);
+    model.deleteEmployee(id);
+    bind.toFile("./views/html/index.tpl",
+      {"delete":"true"},
+      function(data)
+      {
+          //write response
+          response.writeHead(200, {'Content-Type': 'text/html'});
+          response.end(data);
+      });
+  } else {
+    response.redirect("/");
+  }
 }
 
 module.exports.show = show;
 module.exports.create = create;
-module.exports.delete = delete_;
+module.exports.delete_ = delete_;
