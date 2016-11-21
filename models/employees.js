@@ -83,6 +83,29 @@ var updateEmployee = function (emp) {
   }
 }
 
+var deleteEmployee = function(id) {
+  var status = true;
+
+  for (var i=0; i<database.length && status; i++) {
+    if (database[i].id === id) {
+      database.splice(i, 1);
+      status = false;
+    }
+  }
+
+  // I need to update the nextId of the database.
+  // For example, if I delete the last element I've
+  // pushed, when I submit a new employee he will
+  // be given the id equals to nextId+1, but this is wrong.
+  var max=-1
+  for (var i=0; i<database.length; i++) {
+    if (database[i].id > max) {
+      max = database[i].id;
+    }
+  }
+  nextId = max;
+}
+
 var nextVal = function()
 {
   return nextId;
@@ -92,6 +115,7 @@ var nextVal = function()
 module.exports.findEmployeeById = findEmployeeById;
 module.exports.insertEmployee = insertEmployee;
 module.exports.updateEmployee = updateEmployee;
+module.exports.deleteEmployee = deleteEmployee;
 module.exports.isValid = isValid;
 module.exports.isEmpty = isEmpty;
 module.exports.nextVal = nextVal;
