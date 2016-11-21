@@ -1,4 +1,6 @@
-/* @brief This method show and hide the employee form.
+/*
+* @brief This method show and hide the employee form.
+* It will also clear all the form value.
 */
 function showForm() {
   var form = document.getElementById("new_employee");
