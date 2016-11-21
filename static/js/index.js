@@ -9,9 +9,9 @@ function showForm() {
   } else {
     form.style.display = "inline";
   }
-  form.elements["emp_ID"] = "";
-  form.elements["emp_name"] = "";
-  form.elements["emp_surname"] = "";
-  form.elements["emp_salary"] = "";
-  form.elements["emp_level"] = "";
+  form.elements["emp_ID"].value = "";
+  form.elements["emp_name"].value = "";
+  form.elements["emp_surname"].value = "";
+  form.elements["emp_salary"].value = "";
+  form.elements["emp_level"].value = "";
 }
