@@ -24,8 +24,8 @@ function isValid(emp) {
   if (emp.id < 0) return false;
   if (emp.level < 0 || isNaN(emp.level)) return false;
   if (emp.salary < 0 || isNaN(emp.salary)) return false;
-  if (emp.name == "") return false;
-  if (emp.surname == "") return false;
+  if (emp.name == "" || !/^[a-zA-Z]+$/.test(emp.name)) return false;
+  if (emp.surname == "" || !/^[a-zA-Z]+$/.test(emp.surname) ) return false;
   return true;
 }
 
@@ -47,7 +47,7 @@ var findEmployeeById = function (id) {
       return database[i];
     }
   }
-  return new Employee(0, "", "", 0, 0);
+  return new Employee();
 }
 
 /*
@@ -84,12 +84,12 @@ var updateEmployee = function (emp) {
 }
 
 var deleteEmployee = function(id) {
-  var status = true;
+  var status = false;
 
-  for (var i=0; i<database.length && status; i++) {
+  for (var i=0; i<database.length && !status; i++) {
     if (database[i].id === id) {
       database.splice(i, 1);
-      status = false;
+      status = true;
     }
   }
 
@@ -104,6 +104,9 @@ var deleteEmployee = function(id) {
     }
   }
   nextId = max;
+
+  return status;
+
 }
 
 var nextVal = function()

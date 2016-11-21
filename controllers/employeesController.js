@@ -6,11 +6,11 @@ var show = function (request, response) {
   if (request.query.search_emp) {
     emp = model.findEmployeeById(parseInt(request.query.emp_id_search));
     emp = { "display": "inline",
-      "id": emp.id,
-      "name": emp.name,
-      "surname": emp.surname,
-      "level": emp.level,
-      "salary": emp.salary}
+    "id": isNaN(emp.id) ? "" : emp.id,
+    "name": emp.name,
+    "surname": emp.surname,
+    "level": isNaN(emp.level) ? "" : emp.level,
+    "salary": isNaN(emp.salary) ? "" : emp.salary}
       // Update the view with the new information
       bind.toFile("./views/html/index.tpl",
         emp,
@@ -76,10 +76,15 @@ var create = function (request, response) {
 
 var delete_ = function (request, response) {
   if (request.body.delete_emp) {
+    var result = {}
     var id = parseInt(request.body.emp_id_delete);
-    model.deleteEmployee(id);
+    if (model.deleteEmployee(id)) {
+      result = {"delete":"true"};
+    } else {
+      result = {"delete_error": "true"};
+    }
     bind.toFile("./views/html/index.tpl",
-      {"delete":"true"},
+      result,
       function(data)
       {
           //write response

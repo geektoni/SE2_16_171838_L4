@@ -16,9 +16,12 @@
      [: then ~ <p style="color: red;">The value submitted are invalid!</p> :]
      :)
 
-     (:
-      if[delete] ~
+     (: if[delete] ~
       [: then ~ <p style="color: green;">Employee deleted correctly!</p>:]
+     :)
+
+     (: if[delete_error] ~
+      [: then ~ <p style="color: red;">Employee does not exist. Done nothing.</p>:]
      :)
 
 
@@ -30,6 +33,7 @@
        <input type="text" placeholder="Employee's ID"  name="emp_id_delete"/>
        <button name="delete_emp" value="1">Delete Employee</button>
      </form>
+     <hr />
      <br/>
      <form id="new_employee" method="POST" action="http://localhost:1337/employee/create" style="display: (: display ~ none :)">
        <label>Employee ID</label>
@@ -42,7 +46,7 @@
        <input type="text" placeholder="Employee Level" name="emp_level" value="(: level :)" /><br />
        <label>Employee Salary</label>
        <input type="text" placeholder="Employee Salary" name="emp_salary" value="(: salary :)" /><br />
-       <button name="update_emp" value="1"/>Update Employee</button>
+       <button name="update_emp" value="1">Update Employee</button>
        <br/>
      </form>
      <br/>
