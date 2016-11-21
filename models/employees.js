@@ -1,7 +1,7 @@
 
 // \brief Employee Database
 var database = [];
-database.push (new Employee(1, "test", "test", 1, 10));
+database.push (new Employee(1, "Paolo", "Rossi", 2, 1000));
 
 // \brief An auto-increment value
 var nextId = 1;
