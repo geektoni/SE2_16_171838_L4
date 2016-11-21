@@ -30,6 +30,7 @@
        <input type="text" placeholder="Employee's ID"  name="emp_id_delete"/>
        <button name="delete_emp" value="1">Delete Employee</button>
      </form>
+     <hr />
      <br/>
      <form id="new_employee" method="POST" action="http://localhost:1337/employee/create" style="display: (: display ~ none :)">
        <label>Employee ID</label>
