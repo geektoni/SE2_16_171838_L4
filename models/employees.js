@@ -22,8 +22,8 @@ function Employee(id, name, surname, level, salary) {
 */
 function isValid(emp) {
   if (emp.id < 0) return false;
-  if (emp.level < 0 && !isNaN(parseInt(emp.level))) return false;
-  if (emp.salary < 0 && !isNaN(parseInt(emp.salary))) return false;
+  if (emp.level < 0 || isNaN(emp.level)) return false;
+  if (emp.salary < 0 || isNaN(emp.salary)) return false;
   if (emp.name == "") return false;
   if (emp.surname == "") return false;
   return true;

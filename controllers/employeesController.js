@@ -57,9 +57,10 @@ var create = function (request, response) {
           model.updateEmployee(emp);
         }
       }
+      emp = {"success":"true"};
     }
     bind.toFile("./views/html/index.tpl",
-      {"success":"true"},
+      emp,
       function(data)
       {
           //write response
