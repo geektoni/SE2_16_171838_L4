@@ -8,37 +8,36 @@ var url = require('url');
 var util = require('util');
 //html templating module
 var bind = require('bind');
+var bodyParser = require('body-parser');
 
 //instantiate express
 var app = express();
+
+var indexController = require('./controllers/indexController.js');
+var employeesController = require('./controllers/employeesController.js');
 
 // create a virtual path to expose static file
 // like css or images
 app.use('/statics', express.static('static'))
 
+// parse the request
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}));
+
 //listen in a specific port
 app.set('port', (process.env.PORT || 1337));
 
-//create a server
+// Manage get request using the controller
 app.get('/', function(request, response)
 {
-  bind.toFile("./views/html/index.tpl",
-    {},
-    function(data)
-    {
-        //write response
-        response.writeHead(200, {'Content-Type': 'text/html'});
-        response.end(data);
-    });
+  indexController.index(request, response);
 });
 
-//create a server
-app.post('/', function(request, response)
+// Manage post request using the controller
+app.get('/employee/show', function(request, response)
 {
-	var text = '';
-	response.writeHead(200, {'Content-Type': 'text/html'});
-  response.end(text);
-
+  employeesController.show(request, response);
 });
 
 //listen in a specific port
