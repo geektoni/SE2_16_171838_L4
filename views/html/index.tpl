@@ -7,6 +7,16 @@
    </head>
    <body>
      <h2>Empolyees Manager</h2>
+
+     (: if[success] ~
+     [: then ~ <p style="color: green;">Employee modified/created correctly!</p> :]
+     :)
+
+     (: if[error] ~
+     [: then ~ <p style="color: red;">The value submitted are invalid!</p> :]
+     :)
+
+
      <form id="search_employee" method="GET" action="http://localhost:1337/employee/show">
        <input type="text" placeholder="Search by ID"  name="emp_id_search"/>
        <button name="search_emp" value="1">Search</button>
@@ -27,7 +37,7 @@
        <input type="text" placeholder="Employee Level" name="emp_level" value="(: level :)" /><br />
        <label>Employee Salary</label>
        <input type="text" placeholder="Employee Salary" name="emp_salary" value="(: salary :)" /><br />
-       <button type="button" name="update_emp"/>Update Employee</button>
+       <button name="update_emp" value="1"/>Update Employee</button>
        <br/>
      </form>
      <br/>

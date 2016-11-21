@@ -1,10 +1,10 @@
 
 // \brief Employee Database
 var database = [];
-database.push (new Employee(0, "test", "test", 1, 10));
+database.push (new Employee(1, "test", "test", 1, 10));
 
 // \brief An auto-increment value
-var nextId = 0;
+var nextId = 1;
 
 // \brief Employee Object
 function Employee(id, name, surname, level, salary) {
@@ -21,12 +21,18 @@ function Employee(id, name, surname, level, salary) {
 * \return True if the employee is valid, false otherwise
 */
 function isValid(emp) {
-  if (emp.id >= 0 && !isNaN(parseInt(id))) return false;
-  if (emp.level > 0 && !isNaN(parseInt(level))) return false;
-  if (emp.salary > 0 && !isNaN(parseInt(salary))) return false;
+  if (emp.id < 0) return false;
+  if (emp.level < 0 || isNaN(emp.level)) return false;
+  if (emp.salary < 0 || isNaN(emp.salary)) return false;
   if (emp.name == "") return false;
   if (emp.surname == "") return false;
   return true;
+}
+
+function isEmpty(emp) {
+  if (emp.id==0 && emp.name=="" && emp.surname=="" && emp.salary==0
+  && emp.level==0) return true;
+  return false;
 }
 
 /*
@@ -49,13 +55,16 @@ var findEmployeeById = function (id) {
 * \param emp: The new employee
 */
 var insertEmployee = function (emp) {
-  if (isValid(emp)) {
-    if (emp.id == 0) {
-      emp.id = nextId;
-      nextId++;
+  database.push(emp);
+
+  var max=-1
+  for (var i=0; i<database.length; i++) {
+    if (database[i].id > max) {
+      max = database[i].id;
     }
-    database.push(emp);
   }
+  nextId = max;
+
 }
 
 /*
@@ -63,11 +72,27 @@ var insertEmployee = function (emp) {
 * \param The updated employee
 * \param The index of the employee in the database
 */
-var updateEmployee = function (emp, i) {
-  database[i] = emp;
+var updateEmployee = function (emp) {
+  var status = true;
+  for (var i=0; i< database.length && status; i++) {
+    if (database[i].id === emp.id)
+    {
+      database[i] = emp;
+      status = false;
+    }
+  }
+}
+
+var nextVal = function()
+{
+  return nextId;
 }
 
 // Expose methods which will be used in the controller
 module.exports.findEmployeeById = findEmployeeById;
 module.exports.insertEmployee = insertEmployee;
 module.exports.updateEmployee = updateEmployee;
+module.exports.isValid = isValid;
+module.exports.isEmpty = isEmpty;
+module.exports.nextVal = nextVal;
+module.exports.Employee = Employee;
