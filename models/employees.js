@@ -4,7 +4,7 @@ var database = [];
 database.push (new Employee(1, "test", "test", 1, 10));
 
 // \brief An auto-increment value
-var nextId = 0;
+var nextId = 1;
 
 // \brief Employee Object
 function Employee(id, name, surname, level, salary) {
@@ -83,7 +83,7 @@ var updateEmployee = function (emp) {
   }
 }
 
-var nexVal = function()
+var nextVal = function()
 {
   return nextId;
 }
@@ -94,4 +94,5 @@ module.exports.insertEmployee = insertEmployee;
 module.exports.updateEmployee = updateEmployee;
 module.exports.isValid = isValid;
 module.exports.isEmpty = isEmpty;
+module.exports.nextVal = nextVal;
 module.exports.Employee = Employee;

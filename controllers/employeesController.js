@@ -46,7 +46,7 @@ var create = function (request, response) {
         "level": emp.level,
         "salary": emp.salary}
     } else {
-      if(isNaN(parseInt(emp.id))) {
+      if(isNaN(emp.id)) {
         emp.id=model.nextVal()+1;
         model.insertEmployee(emp);
       } else {
