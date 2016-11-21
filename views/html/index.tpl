@@ -16,9 +16,12 @@
      [: then ~ <p style="color: red;">The value submitted are invalid!</p> :]
      :)
 
-     (:
-      if[delete] ~
+     (: if[delete] ~
       [: then ~ <p style="color: green;">Employee deleted correctly!</p>:]
+     :)
+
+     (: if[delete_error] ~
+      [: then ~ <p style="color: red;">Employee does not exist. Done nothing.</p>:]
      :)
 
 
@@ -43,7 +46,7 @@
        <input type="text" placeholder="Employee Level" name="emp_level" value="(: level :)" /><br />
        <label>Employee Salary</label>
        <input type="text" placeholder="Employee Salary" name="emp_salary" value="(: salary :)" /><br />
-       <button name="update_emp" value="1"/>Update Employee</button>
+       <button name="update_emp" value="1">Update Employee</button>
        <br/>
      </form>
      <br/>

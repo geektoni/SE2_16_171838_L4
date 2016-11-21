@@ -7,5 +7,9 @@ function showForm() {
   } else {
     form.style.display = "inline";
   }
-  form.reset();
+  form.elements["emp_ID"] = "";
+  form.elements["emp_name"] = "";
+  form.elements["emp_surname"] = "";
+  form.elements["emp_salary"] = "";
+  form.elements["emp_level"] = "";
 }
