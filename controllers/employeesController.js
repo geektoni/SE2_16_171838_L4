@@ -5,22 +5,26 @@ var show = function (request, response) {
   var emp;
   if (request.query.search_emp) {
     emp = model.findEmployeeById(parseInt(request.query.emp_id_search));
-  }
-
-  // Update the view with the new information
-  bind.toFile("./views/html/index.tpl",
-    { "display": "inline",
+    emp = { "display": "inline",
       "id": emp.id,
       "name": emp.name,
       "surname": emp.surname,
       "level": emp.level,
-      "salary": emp.salary},
-    function(data)
-    {
-        //write response
-        response.writeHead(200, {'Content-Type': 'text/html'});
-        response.end(data);
-    });
+      "salary": emp.salary}
+      // Update the view with the new information
+      bind.toFile("./views/html/index.tpl",
+        emp,
+        function(data)
+        {
+            //write response
+            response.writeHead(200, {'Content-Type': 'text/html'});
+            response.end(data);
+        });
+
+  } else {
+    response.redirect("/");
+    emp = {}
+  }
 }
 
 var create = function (request, response) {
