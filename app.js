@@ -48,8 +48,12 @@ app.post('/employee/delete', function(request, response) {
   employeesController.delete_(request, response);
 });
 
-//listen in a specific port
-app.listen(1337, '127.0.0.1');
+//The 404 Route
+app.get('*', function(request, response){
+  indexController.error(request, response);
+});
 
-//check status
-console.log('Server running at http://127.0.0.1:1337/');
+//listen in a specific port
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});
