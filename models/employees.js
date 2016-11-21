@@ -1,12 +1,12 @@
 
-// \brief Employee Database
+// @brief Employee Database
 var database = [];
-database.push (new Employee(1, "test", "test", 1, 10));
+database.push (new Employee(1, "Paolo", "Rossi", 2, 1000));
 
-// \brief An auto-increment value
+// @brief An auto-increment value
 var nextId = 1;
 
-// \brief Employee Object
+// @brief Employee Object
 function Employee(id, name, surname, level, salary) {
   this.id = parseInt(id);
   this.name = name;
@@ -16,9 +16,9 @@ function Employee(id, name, surname, level, salary) {
 }
 
 /*
-* \brief Check if an employee is valid
-* \param Employee I want to check
-* \return True if the employee is valid, false otherwise
+* @brief Check if an employee is valid
+* @param Employee I want to check
+* @return True if the employee is valid, false otherwise
 */
 function isValid(emp) {
   if (emp.id < 0) return false;
@@ -29,16 +29,26 @@ function isValid(emp) {
   return true;
 }
 
+/*
+* @brief Check if an employee is empty
+* @return True if the employee object is empty, false otherwise
+*/
 function isEmpty(emp) {
-  if (emp.id==0 && emp.name=="" && emp.surname=="" && emp.salary==0
-  && emp.level==0) return true;
+  if (
+    isNaN(emp.id) &&
+    emp.name==null &&
+    emp.surname==null &&
+    isNaN(emp.salary) &&
+    isNaN(emp.level)
+  ) return true;
+
   return false;
 }
 
 /*
-* \brief Method to find an employee by id.
-* \param id: the employee's id I want to find
-* \return The employee or if there is
+* @brief Method to find an employee by id.
+* @param id: the employee's id I want to find
+* @return The employee or if there is
 * no such employee, the method will return an empty one.
 */
 var findEmployeeById = function (id) {
@@ -51,12 +61,14 @@ var findEmployeeById = function (id) {
 }
 
 /*
-* \brief Method that adds an employee inside the database
-* \param emp: The new employee
+* @brief Method that adds an employee inside the database
+* @param emp The new employee
 */
 var insertEmployee = function (emp) {
   database.push(emp);
 
+  // Update the next ID value that a possibile
+  // employee without-an-id can take.
   var max=-1
   for (var i=0; i<database.length; i++) {
     if (database[i].id > max) {
@@ -68,9 +80,9 @@ var insertEmployee = function (emp) {
 }
 
 /*
-* \brief Update an Employee overwriting his data
-* \param The updated employee
-* \param The index of the employee in the database
+* @brief Update an Employee overwriting his data
+* @param The updated employee
+* @param The index of the employee in the database
 */
 var updateEmployee = function (emp) {
   var status = true;
@@ -83,9 +95,14 @@ var updateEmployee = function (emp) {
   }
 }
 
+/*
+* @brief Delete an Employee from the database
+* @param The ID of that user
+*/
 var deleteEmployee = function(id) {
   var status = false;
 
+  // Find the user an then delete it
   for (var i=0; i<database.length && !status; i++) {
     if (database[i].id === id) {
       database.splice(i, 1);
@@ -105,10 +122,12 @@ var deleteEmployee = function(id) {
   }
   nextId = max;
 
-  return status;
-
 }
 
+/*
+* @brief Method that return the nextId
+* @return The next ID that an employee can take
+*/
 var nextVal = function()
 {
   return nextId;
