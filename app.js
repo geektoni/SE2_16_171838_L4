@@ -40,6 +40,10 @@ app.get('/employee/show', function(request, response)
   employeesController.show(request, response);
 });
 
+app.post('/employee/create', function(request, response) {
+  employeesController.create(request, response);
+});
+
 //listen in a specific port
 app.listen(1337, '127.0.0.1');
 
