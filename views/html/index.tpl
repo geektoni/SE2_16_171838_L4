@@ -25,17 +25,17 @@
      :)
 
 
-     <form id="search_employee" method="GET" action="http://localhost:1337/employee/show">
+     <form id="search_employee" method="GET" action="/employee/show">
        <input type="text" placeholder="Search by ID"  name="emp_id_search"/>
        <button name="search_emp" value="1">Search</button>
      </form>
-     <form id="delete_employee" method="POST" action="http://localhost:1337/employee/delete">
+     <form id="delete_employee" method="POST" action="/employee/delete">
        <input type="text" placeholder="Employee's ID"  name="emp_id_delete"/>
        <button name="delete_emp" value="1">Delete Employee</button>
      </form>
      <hr />
      <br/>
-     <form id="new_employee" method="POST" action="http://localhost:1337/employee/create" style="display: (: display ~ none :)">
+     <form id="new_employee" method="POST" action="/employee/create" style="display: (: display ~ none :)">
        <label>Employee ID</label>
        <input type="text" placeholder="Employee ID" name="emp_ID" value="(: id :)" /><br />
        <label>Employee Name</label>
