@@ -47,7 +47,7 @@ var findEmployeeById = function (id) {
       return database[i];
     }
   }
-  return new Employee(0, "", "", 0, 0);
+  return new Employee();
 }
 
 /*
