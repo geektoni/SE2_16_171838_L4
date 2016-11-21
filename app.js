@@ -44,6 +44,10 @@ app.post('/employee/create', function(request, response) {
   employeesController.create(request, response);
 });
 
+app.post('/employee/delete', function(request, response) {
+  employeesController.delete_(request, response);
+});
+
 //listen in a specific port
 app.listen(1337, '127.0.0.1');
 
