@@ -32,8 +32,7 @@ var error = function (request, response) {
     function(data)
     {
         //write response sending also a 404 status message
-        response.status(404);
-        response.writeHead(200, {'Content-Type': 'text/html'});
+        response.writeHead(404, {'Content-Type': 'text/html'});
         response.end(data);
     });
 }

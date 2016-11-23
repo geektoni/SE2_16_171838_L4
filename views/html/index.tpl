@@ -13,7 +13,7 @@
      :)
 
      (: if[error] ~
-     [: then ~ <p style="color: red;">The value submitted are invalid!</p> :]
+     [: then ~ <p style="color: red;">At least one of the values submitted is invalid!</p> :]
      :)
 
      (: if[delete] ~
